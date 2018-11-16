@@ -8,7 +8,7 @@
 #include "utilisateurPremium.h"
 #include "utilisateurRegulier.h"
 
-int  GestionnaireUtilisateurs::estExistant(Utilisateur* utilisateur) {
+bool  GestionnaireUtilisateurs::estExistant(Utilisateur* utilisateur) {
 
 	//map<Utilisateur*, double>::iterator it, it1;
 

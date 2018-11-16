@@ -3,6 +3,8 @@
 * Date: 4 novembre 2018
 * Auteur: Ryan Hardie
 *******************************************/
+#pragma once
+
 #include "foncteur.h"
 
 template<typename T, typename C, typename D,typename FoncteurAjouter>

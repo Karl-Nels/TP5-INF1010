@@ -13,8 +13,10 @@
 #include<iterator>
 #include<algorithm>
 #include"utilisateur.h"
+#include"foncteur.h"
 
 class GestionnaireUtilisateurs: public GestionnaireGenerique<Utilisateur*,map<Utilisateur*,double>,Utilisateur*,AjouterUtilisateur> {
 public:
-	int estExistant(Utilisateur* utilisateur);
+	bool estExistant(Utilisateur* utilisateur);
+
 };

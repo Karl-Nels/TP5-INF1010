@@ -4,6 +4,8 @@
 * Auteur: Ryan Hardie
 *******************************************/
 #include <map>
+#include "utilisateurPremium.h"
+#include "utilisateurRegulier.h"
 
 class AjouterDepense{
 public:
@@ -25,16 +27,37 @@ vector<Depense*> conteneur_;
 
 
 class AjouterUtilisateur {
-
 public:
 	AjouterUtilisateur(map<Utilisateur*, double>conteneur):conteneur_(conteneur){
 	}
 
 	map<Utilisateur*, double>& operator()(Utilisateur* utilisateur) {
 
+		UtilisateurRegulier* utilisateurRegulier = dynamic_cast<UtilisateurRegulier*>(utilisateur);
+		UtilisateurPremium* utilisateurPremium = dynamic_cast<UtilisateurPremium*>(utilisateur);
+
+		if (utilisateurRegulier != nullptr) {
+			
+			if (!utilisateurRegulier->getPossedeGroupe()) {
+				utilisateurRegulier->setPossedeGroupe(true);
+			}
+			else {
+				cout << "Erreur: L'utilisateur" << utilisateurRegulier->getNom() << " doit renouveler son abonnement premium" << endl;
+				return conteneur_;
+			}
+		}
+		else {
+
+			if (utilisateurPremium != nullptr && utilisateurPremium->getJoursRestants() <= 0) {
+				cout << "Erreur: L'utilisateur " << utilisateur->getNom() << " doit renouveler son abonnement premium" << endl;
+				return conteneur_;
+			}
+		}
+
 		pair<Utilisateur*, double> newUser(utilisateur,0);
 
 		conteneur_.insert(newUser);
+		return conteneur_;
 	}
 
 private:
