@@ -26,14 +26,12 @@ public:
 	// Constructeurs
 	Groupe();
 	Groupe(const string& nom);
-
 	// Destructeur
 	~Groupe();
 
 	// Methodes d'acces
 	string getNom() const;
 	vector<Transfert*> getTransferts() const;
-
 	// TODO : À modifier :
 	vector<double> getComptes() const;
 	double getTotalDepenses() const;

@@ -7,19 +7,14 @@
 #pragma once
 
 #include "utilisateur.h"
-
+#include "gestionnaireGenerique.h"
 #include <vector>
+#include <map>
+#include<iterator>
+#include<algorithm>
+#include"utilisateur.h"
 
-class GestionnaireUtilisateurs {
+class GestionnaireUtilisateurs: public GestionnaireGenerique<Utilisateur*,map<Utilisateur*,double>,Utilisateur*,AjouterUtilisateur> {
 public:
-	Utilisateur* getUtilisateurParIndex(int i) const;
-	vector<Utilisateur*> getUtilisateurs() const;
-	int getNombreUtilisateurs() const;
-	int getIndexDe(Utilisateur* utilisateur) const;
-
-	
-	GestionnaireUtilisateurs& ajouterUtilisateur(Utilisateur* utilisateur);
-
-private:
-	vector<Utilisateur*> utilisateurs_;
+	int estExistant(Utilisateur* utilisateur);
 };

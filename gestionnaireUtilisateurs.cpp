@@ -8,54 +8,30 @@
 #include "utilisateurPremium.h"
 #include "utilisateurRegulier.h"
 
-Utilisateur* GestionnaireUtilisateurs::getUtilisateurParIndex(int i) const
-{
-	return utilisateurs_[i];
-}
+int  GestionnaireUtilisateurs::estExistant(Utilisateur* utilisateur) {
 
-vector<Utilisateur*> GestionnaireUtilisateurs::getUtilisateurs() const
-{
-	return utilisateurs_;
-}
+	//map<Utilisateur*, double>::iterator it, it1;
 
-int GestionnaireUtilisateurs::getNombreUtilisateurs() const
-{
-	return utilisateurs_.size();
-}
+	/*auto existe = [utilisateur](map<Utilisateur*, double>::iterator iterateur) -> bool {
 
-int GestionnaireUtilisateurs::getIndexDe(Utilisateur * utilisateur) const
-{
-	int index = -1;
-	for (int i = 0; i < utilisateurs_.size(); i++) {
-		if (utilisateurs_[i] == utilisateur) {
-			index = i;
-			break;
-		}
-	}
-	return index;
-}
+		return iterateur->first == utilisateur;
+	};*/  //Test sur lamda a effecteuer plus tard
 
-GestionnaireUtilisateurs& GestionnaireUtilisateurs::ajouterUtilisateur(Utilisateur * utilisateur)
-{
-	UtilisateurRegulier* utilisateurRegulier = dynamic_cast<UtilisateurRegulier*>(utilisateur);
-	UtilisateurPremium* utilisateurPremium = dynamic_cast<UtilisateurPremium*>(utilisateur);
+	/*	it = find_if(conteneur_.begin(), conteneur_.end(), existe(it1));
 
-	if (utilisateurRegulier != nullptr) {
-		if (!utilisateurRegulier->getPossedeGroupe()) {
-			utilisateurRegulier->setPossedeGroupe(true);
-		}
-		else {
-			cout << "Erreur : L'utilisateur " << utilisateur->getNom() << " n'est pas un utilisateur premium et est deja dans un groupe." << endl;
-			return *this;
-		}
-	}
-	else {
-		if (utilisateurPremium != nullptr && utilisateurPremium->getJoursRestants() <= 0) {
-			cout << "Erreur : L'utilisateur " << utilisateur->getNom() << " doit renouveler son abonnement premium" << endl;
-			return *this;
-		}
-	}
+	if (it != conteneur_.end())
+	return 1;
+	else
+	return 0;
+	}*/
 
-	utilisateurs_.push_back(utilisateur);
-	return *this;
+	map<Utilisateur*, double>::iterator  test;
+	test = conteneur_.begin();
+	bool testSurBoolen = false;
+
+	for (test = conteneur_.begin(); test != conteneur_.end(); test++)
+		if (test->first == utilisateur)
+			testSurBoolen = true;
+
+	return testSurBoolen;
 }

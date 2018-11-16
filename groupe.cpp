@@ -45,7 +45,7 @@ vector<Depense*> Groupe::getDepenses() const
 // TODO : À modifier :
 vector<Utilisateur*> Groupe::getUtilisateurs() const
 {
-	return gestionnaireUtilisateurs_->getUtilisateurs();
+	return gestionnaireUtilisateurs_->
 }
 
 vector<Transfert*> Groupe::getTransferts() const
