@@ -34,17 +34,17 @@ public:
 		vector<Utilisateur*>::iterator itVecteur;
 		Utilisateur* userTmp;
 
-		for (auto it = conteneur_.begin(); it != conteneur_.end() && counter ==0 ; it++) {
-			counter--;
- 
-			if (counter == 0) {
-				
-				
-				return it->first;
-			}
-		}
+		/*if (dynamic_cast<Depense*>(conteneur_[i]) != nullptr)
+			return conteneur_[i];
+		else {*/
+			for (auto it = conteneur_.begin(); it != conteneur_.end() && counter != 0; it++) {
+				counter--;
 
-		/*for (unsigned j = 0; j < conteneur_.size(); j++) {
+				if (counter == 0)
+					return it->first;
+			}
+		
+			/*for (unsigned j = 0; j < conteneur_.size(); j++) {
 			counter--;
 
 			if (counter == 0)

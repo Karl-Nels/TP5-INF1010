@@ -91,9 +91,9 @@ void Groupe::setNom(const string& nom) {
 Groupe& Groupe::ajouterDepense(double montant, Utilisateur* payePar, const string& nom, const string& lieu)
 {
 	// Trouver l'index de l'auteur de la depense
-	int indexPayePar = gestionnaireUtilisateurs_->estExistant(payePar);
+	bool indexPayePar = gestionnaireUtilisateurs_->estExistant(payePar);
 
-	if (indexPayePar == -1) {
+	if (indexPayePar == false) {
 		return *this;
 	}
 

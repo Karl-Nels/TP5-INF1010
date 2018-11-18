@@ -43,7 +43,8 @@ public:
 				utilisateurRegulier->setPossedeGroupe(true);
 			}
 			else {
-				cout << "Erreur: L'utilisateur" << utilisateurRegulier->getNom() << " doit renouveler son abonnement premium" << endl;
+				cout << "Erreur: L'utilisateur " << utilisateurRegulier->getNom()
+					<< " n'est pas un utilisateur premium et appartient deja a un groupe" << endl;
 				return conteneur_;
 			}
 		}

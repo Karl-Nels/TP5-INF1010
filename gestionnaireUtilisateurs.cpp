@@ -27,11 +27,11 @@ bool  GestionnaireUtilisateurs::estExistant(Utilisateur* utilisateur) {
 
 	map<Utilisateur*, double>::iterator  test;
 	test = conteneur_.begin();
-	bool testSurBoolen = false;
+	bool testSurBooleen = false;
 
-	for (test = conteneur_.begin(); test != conteneur_.end(); test++)
-		if (test->first == utilisateur)
-			testSurBoolen = true;
+	for (test = conteneur_.begin(); test != conteneur_.end() && testSurBooleen == false; test++)
+		if (test->first == utilisateur) 
+			testSurBooleen = true;
 
-	return testSurBoolen;
+	return testSurBooleen;
 }
