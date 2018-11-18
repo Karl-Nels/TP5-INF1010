@@ -10,5 +10,6 @@ double GestionnaireDepenses::getTotalDepenses() const
 	for (int i = 0; i < conteneur_.size(); i++) {
 		totalDepenses += conteneur_[i]->getMontant();
 	}
+
 	return totalDepenses;
 }

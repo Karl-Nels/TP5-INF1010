@@ -13,7 +13,7 @@ class GestionnaireGenerique {
 public:
 	C getConteneur() const {
 
-		return C;
+		return conteneur_;
 	}
 
 
@@ -25,19 +25,35 @@ public:
 	int getNombreElements() const {
 
 		return conteneur_.size();
+		
 	}
 
 	D getElementParIndex(int i) const {
-		iterator it;
+
 		int counter = i;
-		for (it = conteneur_.begin(); it != conteneur_.end() && counter ==0 ; it++) {
-			it++;
+		vector<Utilisateur*>::iterator itVecteur;
+		Utilisateur* userTmp;
+
+		for (auto it = conteneur_.begin(); it != conteneur_.end() && counter ==0 ; it++) {
 			counter--;
+ 
+			if (counter == 0) {
+				
+				
+				return it->first;
+			}
 		}
+
+		/*for (unsigned j = 0; j < conteneur_.size(); j++) {
+			counter--;
+
+			if (counter == 0)
+				return conteneur_[j];
 		
-		D = *it;
-		return D;
+		}
+	*/		
 	}
+	
 
 protected:
 	C conteneur_;

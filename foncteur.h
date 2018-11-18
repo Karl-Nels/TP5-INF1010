@@ -7,6 +7,7 @@
 #include "utilisateurPremium.h"
 #include "utilisateurRegulier.h"
 
+#pragma once
 class AjouterDepense{
 public:
 AjouterDepense(vector<Depense*> conteneur): conteneur_(conteneur){

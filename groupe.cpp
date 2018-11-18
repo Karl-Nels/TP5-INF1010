@@ -3,9 +3,9 @@
 * Date: 4 novembre 2018
 * Auteur: Ryan Hardie
 *******************************************/
-
-#include "groupe.h"
 #pragma once
+#include "groupe.h"
+
 // Constructeurs
 Groupe::Groupe() {
 	nom_ = "";
@@ -60,7 +60,6 @@ vector<double> Groupe::getComptes() const { // Declaration variable necessaire?
 	map<Utilisateur*, double> conteneur = gestionnaireUtilisateurs_->getConteneur();
 
 	for (auto it = conteneur.begin(); it != conteneur.end(); it++) {
-
 		elements.push_back(it->second);
 	}
 
@@ -85,17 +84,6 @@ GestionnaireDepenses * Groupe::getGestionnaireDepenses()
 // Methodes de modifications
 void Groupe::setNom(const string& nom) {
 	nom_ = nom;
-}
-
-//Methodes ajoutees(retour de pointeur sur les Gestionnaires depenses et  utilisateurs
-GestionnaireUtilisateurs* Groupe::getGestionnaireUtilisateurs() {
-
-	return gestionnaireUtilisateurs_;
-}
-
-GestionnaireDepenses* Groupe::getGestionnaireDepenses() {
-
-	return gestionnaireDepenses_;
 }
 
 // Methodes d'ajout
