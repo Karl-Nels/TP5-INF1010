@@ -43,7 +43,7 @@ vector<Depense*> Groupe::getDepenses() const
 }
 
 // TODO : À modifier :
-map<Utilisateur*,double> Groupe::getUtilisateurs() const // Resolu
+map<Utilisateur*,double> Groupe::getUtilisateurs() const 
 {
 	return gestionnaireUtilisateurs_->getConteneur();
 }
@@ -54,7 +54,7 @@ vector<Transfert*> Groupe::getTransferts() const
 }
 
 // TODO : À modifier :
-vector<double> Groupe::getComptes() const { // Declaration variable necessaire?
+vector<double> Groupe::getComptes() const { 
 		
 	vector<double> elements;
 	map<Utilisateur*, double> conteneur = gestionnaireUtilisateurs_->getConteneur();
@@ -91,7 +91,7 @@ void Groupe::setNom(const string& nom) {
 Groupe& Groupe::ajouterDepense(double montant, Utilisateur* payePar, const string& nom, const string& lieu)
 {
 	// Trouver l'index de l'auteur de la depense
-	bool indexPayePar = gestionnaireUtilisateurs_->estExistant(payePar); //point break majeur ligne_95
+	bool indexPayePar = gestionnaireUtilisateurs_->estExistant(payePar);
 	map<Utilisateur*, double> conteneur = gestionnaireUtilisateurs_->getConteneur();
 	
 	if (indexPayePar == false) {
@@ -100,51 +100,25 @@ Groupe& Groupe::ajouterDepense(double montant, Utilisateur* payePar, const strin
 
 	Depense* depense = new Depense(nom, montant, lieu);
 	// Modifié :
-	// depenses_.push_back(depense);
 
 	// Ajouté :
-//	gestionnaireDepenses_->ajouterDepense(depense); // modifie sur la ligne du bas
 	gestionnaireDepenses_->ajouter(depense);
 	*payePar += depense;
 
 	// Mise a jour des comptes
 	double montantReparti = depense->getMontant() / gestionnaireUtilisateurs_->getNombreElements();
-	/*for( it = gestionnaireUtilisateurs_->getConteneur().begin(); it == pos; it++)*/
-	//		gestionnaireUtilisateurs_->setCompte(make_pair(payePar,))
 	double currentAccount = depense->getMontant() - montantReparti;
 	
 	gestionnaireUtilisateurs_->mettreAJourComptes(payePar, currentAccount);
-	//gestionnaireUtilisateurs_->
-			//gestionnaireUtilisateurs_->getConteneur()[payePar] = pos->second;
-	//comptes_[indexPayePar] += depense->getMontant() - montantReparti; // Similaire aux deux lignes precedentes(theoriquement)
 	
-	/*for (int i = 0; i < gestionnaireUtilisateurs_->getNombreElements(); i++) {
-		if (i != indexPayePar) {
-			comptes_[i] -= montantReparti;
-		}
-	}*/
-
-			/*for (auto it = conteneur.begin(); it != conteneur.end(); it++) {	
-				
-				Utilisateur* userTmp = it->first;
-
-				if (userTmp->getNom() != pos->first->getNom())
-					it->second -= montantReparti;
-
-			}*/
-
 	return *this;
 }
 
 Groupe& Groupe::operator+=(Utilisateur* utilisateur)
 {
 	// Ajouté :
-//	gestionnaireUtilisateurs_->ajouterUtilisateur(utilisateur);
 	gestionnaireUtilisateurs_->ajouter(utilisateur);
 
-	//gestionnaireUtilisateurs_->getConteneur().end()->second = 0.0; // mettre la valeur de la deuxieme operande pointee par l'iterateur a 0
-
-	//comptes_.push_back(0); Le compte sera desormais associe a l'utilisateur, plus besoin d'utiliser le vecteur double
 
 	return *this;
 }
@@ -166,16 +140,6 @@ void Groupe::equilibrerComptes() {
 		for (auto it = gestionnaireUtilisateurs_->getConteneur().begin(); it != gestionnaireUtilisateurs_->getConteneur().end(); it++) {
 
 	
-	/*  V2 ligne 161- 165
-			
-	map<Utilisateur*,double>::iterator iterateurTmp;
-	for( iterateurTmp = gestionnaireUtilisateurs_->getConteneur().begin();
-	iterateurTmp != gestionnaireUtilisateurs_->getConteneur().end(); iterateurTmp++){
-			
-
-		}
-			
-			*/
 			posIterateur++;
 			if (it->second > max) {  //comptes_[i] > max
 
@@ -241,11 +205,11 @@ void Groupe::equilibrerComptes() {
 // Methode d'affichage
 // TODO : À modifier :
 
-/*ostream & operator<<(ostream& os, const Groupe& groupe)
+ostream & operator<<(ostream& os, const Groupe& groupe)
 {
 	os << "\nGroupe " << groupe.nom_ << ".\nCout total: " << groupe.getTotalDepenses() << "$ \nUtilisateurs:    \n\n";
-	for (int i = 0; i < groupe.gestionnaireUtilisateurs_->getNombreElements(); i++) {
-		os << "\t- " << *groupe.gestionnaireUtilisateurs_->getElementParIndex(i);
+	for (auto it = groupe.gestionnaireUtilisateurs_->getConteneur().begin(); it != groupe.gestionnaireUtilisateurs_->getConteneur().end() ; it++) {
+		os << "\t- " << it->first;
 	}
 	os << endl;
 
@@ -256,12 +220,11 @@ void Groupe::equilibrerComptes() {
 	}
 	else { 
 		os << "Les comptes ne sont pas equilibres" << endl << endl;
-		//for (int i = 0; i < groupe.comptes_.size(); i++) {
-			//os << groupe.gestionnaireUtilisateurs_->getElementParIndex(i)->getNom() << " : " << groupe.comptes_[i] << endl;
-		//}
+		for (auto it = groupe.gestionnaireUtilisateurs_->getConteneur().begin(); it != groupe.gestionnaireUtilisateurs_->getConteneur().end(); it++) {
+			os << it->first->getNom() << " : " << it->second << endl;
+		}
 	}
 
 	os << endl;
 	return os;
 }
-*/

@@ -24,9 +24,6 @@ private:
 vector<Depense*> conteneur_;
 };
 
-
-
-
 class AjouterUtilisateur {
 public:
 	AjouterUtilisateur(map<Utilisateur*, double>conteneur):conteneur_(conteneur){
@@ -65,9 +62,6 @@ public:
 private:
 	map<Utilisateur*, double> conteneur_;
 };
-
-
-
 
 class FoncteurIntervalle {
 

@@ -174,10 +174,8 @@ int main() {
 	// Test 17: ajout de depense avec utilisateur hors du groupe
 	tests.push_back(groupe1->getDepenses().size() == 1);
 
-	double valeur = groupe1->getGestionnaireUtilisateurs()->getConteneur()[up1];
 	// Test 18: modification des comptes
-		bool test = groupe1->getGestionnaireUtilisateurs()->getConteneur()[up1] == 150; // 150 for real?
-		bool test2 = groupe1->getComptes()[1] == -30;
+
 	// TODO : Décommenter ce test et commenter le test suivant (pour pouvoir tester avec les méthodes de la classe GestionnaireGenerique) ---------
 	tests.push_back(groupe1->getGestionnaireUtilisateurs()->getConteneur()[up1] == 150
 		&& groupe1->getComptes()[1] == -30);

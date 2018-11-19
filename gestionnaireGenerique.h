@@ -28,7 +28,7 @@ public:
 		
 	}
 
-	D getElementParIndex(int i) const { // Test resolution external symbol (changer le type de getElementparIndex)
+	D getElementParIndex(int i) const {
 		pair<Utilisateur*, double> user;
 		int counter = i;
 
