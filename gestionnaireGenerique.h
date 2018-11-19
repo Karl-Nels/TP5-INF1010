@@ -24,34 +24,28 @@ public:
 
 	int getNombreElements() const {
 
-		return conteneur_.size();
+		return int(conteneur_.size());
 		
 	}
 
-	D getElementParIndex(int i) const {
-
+	D getElementParIndex(int i) const { // Test resolution external symbol (changer le type de getElementparIndex)
+		pair<Utilisateur*, double> user;
 		int counter = i;
-		vector<Utilisateur*>::iterator itVecteur;
-		Utilisateur* userTmp;
+
+		//vector<Utilisateur*>::iterator itVecteur;
 
 		/*if (dynamic_cast<Depense*>(conteneur_[i]) != nullptr)
 			return conteneur_[i];
 		else {*/
-			for (auto it = conteneur_.begin(); it != conteneur_.end() && counter != 0; it++) {
+			for (auto it = conteneur_.begin(); it != conteneur_.end() && counter != 1; it++) {
 				counter--;
-
-				if (counter == 0)
-					return it->first;
+				
+				if (counter == 1) {
+					user = pair<Utilisateur*, double>(it->first, 0.0);
+					break;
+				}
 			}
-		
-			/*for (unsigned j = 0; j < conteneur_.size(); j++) {
-			counter--;
-
-			if (counter == 0)
-				return conteneur_[j];
-		
-		}
-	*/		
+			return user;
 	}
 	
 

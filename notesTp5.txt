@@ -1,0 +1,67 @@
+ /************************** Notes d'evaluation et de suivi de taches Tp5 inf1010 ************/
+
+- GestionnaireDepenses.h et .cpp = > Fait
+
+- Foncteur.h = > fait
+- GestionnaireGenerique.h = >  Fait
+
+	>  retour sur la methode D getElementIndex (int i) : la methode doit renvoyer un type D
+dependamment de la classe appelante; deux valeurs possibles => pair<Utilisateur*,double> 
+							    => Depense*
+
+	-La modification du troisieme argument de template dans GestionnairUtilisateurs ayant precedement
+	la valeur Utilisateur*, pour devenir pair<Utilisateur*,double> a cree des "unsolved external" dans
+	cette meme methode. Entrainant aussi des modifications dans le fichier cpp(1)
+
+	- L'element de retour de la methode getElementIndex devrait varier , et pourtant , nous ne pouvons
+	pas faire de tests sur une valeur de Depense* (2)
+
+	Possibles methodes de resolution:
+	
+
+	Resolution 1: 
+
+	Determiner l'origine du refus des lignes de code suivantes:
+		
+		*if (dynamic_cast<Depense*>(conteneur_[i]) != nullptr)
+			return conteneur_[i];
+		
+	Resolution2 :
+
+
+	Verifier les valeurs prises par nos iterateurs dans le fichier groupe.cpp 
+	Il est important de modifier directement les valeurs des comptes representant 
+	le second de chaque utilisateur map<Utilisateur*,double>  present dans
+	le GestionnaireUtilisateurs
+
+- GestionnaireUtilisateurs.h et .cpp = >  Modifications supplementaires et ajouts de nouvelles methodes
+conformement aux nouvelles corrections
+	
+	+ tache effectuee	
+
+
+	(A) + Eventuellement modifier la methode  estExistant de GestionnaireUtilisateurs et retirer le deuxieme
+	parametre(map<Utilisateur*,double>&pos). Il devient negligeable avec l'arrivee de la methode getUtilisateurSUivant
+
+-groupe.cpp => les nouvelles methodes de la classe GestionnaireUtilisateurs vont produire des changements dans le fichier groupe.cpp
+, plus particulierement la methode ajouterDepense.
+
+	+ Etant donne que des modifications ont  deja ete apportees, nous allons utiliser le fichier de base  groupe.cpp pour
+	une meilleure lecture du code, en parallele avec la vraie version de ce fichier
+
+	Etape 1:
+	- Verifier l'impact  de A sur le groupe cpp (fait)
+	
+	Etape 2 :
+	- Modifier  A et effectuer les changements en chaine sur groupe .cpp 
+
+	(B)Constat: APres modificaitons effectuees sur l'ensemble des methodes, nous nous retrouvons avec une erreur
+	TYpe C2064 == term does not evaluate to a function taking 1 arguments
+	Cette erreur se refere a l'include algorithm;
+
+	 >L'erreur n'est pas liee a des utilisations de bind dans  getUtilisateurSuivant
+		Il faut donc chercher les methodes, fonctions  faisant appel a algorithm
+	
+	Methode de correction (B) : hum........
+
+	

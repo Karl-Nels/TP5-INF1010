@@ -60,7 +60,7 @@ private:
 	vector<Transfert*> transferts_;
 
 	// TODO : À modifier :
-	vector<double> comptes_;
+	//vector<double> comptes_;
 
 	// Retiré :
 	// vector<Utilisateur*> utilisateurs_;
